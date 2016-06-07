@@ -7,13 +7,13 @@
 (def tmi (js/require "tmi.js"))
 
 (def options
-  (js-obj
-   "options"    (js-obj "debug" true)
-   "connection" (js-obj "cluster"   "aws"
-                        "reconnect" true)
-   "identity"   (js-obj "username" "llamautomaton"
-                        "password" "oauth:qq8v7ljmgmo3w1yg0gy18qq2omp1nx")
-   "channels"   (array "#captaintheredbeard")))
+  (clj->js
+   {:options    {:debug "true"}
+    :connection {:cluster "aws"
+                 :reconnect "true"}
+    :identity   {:username "llamautomaton"
+                 :password "oauth:qq8v7ljmgmo3w1yg0gy18qq2omp1nx"}
+    :channels   ["#captaintheredbeard"]}))
 
 (def llama (.client tmi options))
 
