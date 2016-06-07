@@ -11,8 +11,8 @@
    "connection" (js-obj "cluster"   "aws"
                         "reconnect" true)
    "identity"   (js-obj "username" "llamautomaton"
-                        "password" "foo")
-   "channels"   (array)))
+                        "password" "oauth:qq8v7ljmgmo3w1yg0gy18qq2omp1nx")
+   "channels"   (array "#captaintheredbeard")))
 
 (def llama (.client tmi options))
 
