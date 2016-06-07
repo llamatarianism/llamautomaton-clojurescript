@@ -1,5 +1,6 @@
 (ns bot.core
-  (:require [cljs.nodejs :as nodejs]))
+  (:require [cljs.nodejs :as nodejs]
+            [clojure.string :as str]))
 
 (nodejs/enable-util-print!)
 
@@ -16,8 +17,14 @@
 
 (def llama (.client tmi options))
 
+(defn- say-hello [chan user mesg self]
+  (when (and (= (.-username user) "llamatarianism")
+           (= mesg "WE CAN REBUILD HIM"))
+    (.say llama chan "WE HAVE THE TECHNOLOGY")))
+
 (defn -main []
   (.connect llama)
+  (.on llama "chat" say-hello)
   (println "yay"))
 
 (set! *main-cli-fn* -main)
